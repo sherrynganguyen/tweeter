@@ -1,20 +1,16 @@
 nav {
-  height: 120px;
-  width: 100%;
   z-index: 100;
-  background-color: #4056A1;
-  color: #FFFFFF;
-  font-family:'Bungee', cursive;
-  padding: 1.5em;
   display: flex;
   justify-content: space-between;
-}
-/* nav.span {
+  width: 100%;
+  height: 120px;
+  padding: 1.5em;
+  background-color: #4056A1;
   font-family:'Bungee', cursive;
+  color: #FFFFFF;
+}
 
-} */
-
-#post {
+#newpost {
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
 }

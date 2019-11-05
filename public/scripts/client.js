@@ -29,23 +29,36 @@ const data = [
     }
   ]
 
+// const header = function (tweet) {
+//   let username = tweet["user"]["name"];
+//   let tweeter = tweet["user"]["handle"];
+//   return username, tweeter;
+// }
+
+
 const renderTweets = function(tweets) {
-  // loops through tweets
-  // calls createTweetElement for each tweet
-  // takes return value and appends it to the tweets container
+  for (let tweet of tweets) {
+    let result = createTweetElement(tweet)
+    $('#tweets-container').append(result);
+  }
+  
 }
 
 const createTweetElement = function(tweet) {
-  let $tweet = $('<article>').addClass('tweet');
+  let $tweet = $('<article>').addClass('tweet'); //create new article class??
   // ...
+  $tweet.append($("<h5 id='left'>").text(tweet["user"]["name"]));
+  $tweet.append($("<h5 id='right'>").text(tweet["user"]["handle"]));
+  $tweet.append($('<p>').text(tweet["content"]["text"]));
+  $tweet.append($('<h6>').text(tweet["created_at"]));
   return $tweet;
 }
 
 renderTweets(data);
 
 
-const $tweet = createTweetElement(tweetData);
+// const $tweet = createTweetElement();
 
 // Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
-$('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+// console.log($tweet); // to see what it looks like
+// $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.

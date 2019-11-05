@@ -15,23 +15,24 @@ html {
  */
 
 body {
+  width: 100%;
+  align-content: center;
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif ;
-  width: 100%;
-  align-content: center;
+}
 
-}
-span {
-  font-family: 'Bungee', cursive;
+nav span {
   font-size: 32px;
+  font-family: 'Bungee', cursive;
 }
+
 main {
-  /* position: absolute; */
-  width: 90%;
+  position: relative;
   margin-left: 5%;
   margin-right: 5%;
+  width: 90%;
 }
 
 /*

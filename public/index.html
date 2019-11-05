@@ -16,19 +16,21 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/all-tweet.css" type="text/css" />
+    
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+  
   </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
-      <span id="tweeter">tweeter</span>
-      <span id="post"><strong>Write</strong> a new tweet</span>
+      <span>tweeter</span>
+      <span id="newpost"><strong>Write</strong> a new tweet</span>
       <!-- <h2>Testing layout</h2> -->
       <!-- <p>Testing CSS.</p> -->
     </nav>
@@ -43,7 +45,10 @@
       </div>
   </header>
     <!-- Page-specific (main) content here -->
+
+    
     <main class="container">
+      <!-- new tweet -->
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form action="/tweets/" method="POST">
@@ -52,15 +57,19 @@
           <span class="counter">140</span>
         </form>
       </section>
-      <article>
+
+      <!-- all tweet posted -->
+      <article id="tweets-container">
         <header>
-          <h5 id="left">User Name</h5>
-          <h5 id="right">@tweeter</h5>
+          <h5 id="left"></h5>
+          <h5 id="right"></h5>
         </header>
-        <p> Testing all tweet list</p>
+        
+        <p></p>
         <!-- time & tweeter footer -->
+        
         <footer>
-            <h6>10 days ago</h6>
+            <h6></h6>
             <h6>
               <img src="images/flag.png">
               <img src="images/retweet.png">
@@ -69,6 +78,9 @@
         </footer>
         
       </article>  
+      
+
+
       <p>The classic latin passage that just never gets old, enjoy as much (or as little) lorem ipsum as you can handle with our easy to use filler text generator.
 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
