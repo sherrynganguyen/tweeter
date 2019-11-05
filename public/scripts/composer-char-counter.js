@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // --- our code goes here ---
-  $(".textarea").keyup(function() {
+  $(".textarea").keydown(function() {
     const max = 140;
     let character = $(this).val().length;
     if (character > max) {

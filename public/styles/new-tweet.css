@@ -5,13 +5,17 @@
 textarea {
   width: 100%;
   background-color: transparent;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  /* border-bottom: thick; */
-  border-bottom-color: chocolate;
+  border: none;
+  border-bottom-style:solid;
+  border-width: thick;
+  border-bottom-color: #545149;
 }
 .tweetbox {
   background-color: blue;
+  color: #FFFFFF;
   font-family: 'Bungee', cursive;
 }
+.counter {
+  float: right;
+}
+

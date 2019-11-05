@@ -2,7 +2,10 @@ header {
   height: 400px;
   width: 100%;
   position: relative;
-  background-color: coral;
+  z-index: 2;
+  background-image:url('../images/cardboard.png');
+  background-color: #e83600;
+  
 }
 
 header div {
