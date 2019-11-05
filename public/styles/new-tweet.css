@@ -1,0 +1,17 @@
+.new-tweet {
+  align-content: center;
+  width: 100%;
+}
+textarea {
+  width: 100%;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  /* border-bottom: thick; */
+  border-bottom-color: chocolate;
+}
+.tweetbox {
+  background-color: blue;
+  font-family: 'Bungee', cursive;
+}

@@ -18,6 +18,20 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif ;
+  width: 100%;
+  align-content: center;
+
+}
+span {
+  font-family: 'Bungee', cursive;
+  font-size: 32px;
+}
+main {
+  /* position: absolute; */
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 /*

@@ -1,0 +1,15 @@
+header {
+  height: 400px;
+  width: 100%;
+  position: relative;
+  background-color: coral;
+}
+
+header div {
+  /* margin-top: 1em; */
+  display: flex;
+  justify-content: center;
+}
+img {
+  margin-top: 1em;
+}
