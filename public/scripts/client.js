@@ -23,7 +23,7 @@ const data = [
         "avatars": "https://i.imgur.com/nlhLi3I.png",
         "handle": "@rd" },
       "content": {
-        "text": "Je pense , donc je suis"
+        "text": "Je pense , donc je suisonc je suisonc je suisonc je suisonc je suisonc je suisonc je suisonc je suis Je pense , donc je suisonc je suisonnnnn"
       },
       "created_at": 1461113959088
     }
@@ -37,18 +37,20 @@ function calDate(tweet) {
 }
 
 function header(tweet) {
+  let icon = tweet["user"]["avatars"];
+  let photo = $("<h5 class='icon'>").append(`<img src=${icon}>`);
   let username = $("<h5 class='left'>").text(tweet["user"]["name"]);
   let id = $("<h5 class='right'>").text(tweet["user"]["handle"]);
-  let header = [username, id]
+  let header = [photo, username, id]
   return header;
 }
 
 function footer(tweet) {
 
   let date = $("<h6 id='date'>").text(calDate(tweet) +" days ago");
-  let flag = $("<h6 id='social'>").prepend("<img src='/images/flag.png'>");
-  let retweet = $("<h6 id='social'>").prepend("<img src='/images/retweet.png'>");
-  let like = $("<h6 id='social'>").prepend("<img src='/images/heart.png'>");
+  let flag = $("<h6 id='social'>").append("<img src='/images/flag.png'>");
+  let retweet = $("<h6 id='social'>").append("<img src='/images/retweet.png'>");
+  let like = $("<h6 id='social'>").append("<img src='/images/heart.png'>");
 
   let footer = [date, flag, retweet, like]
   return footer;
@@ -64,13 +66,19 @@ const renderTweets = function(tweets) {
 
 const createTweetElement = function(tweet) {
   let $tweet = $('<article>').addClass('tweet');
-  $tweet.append(header(tweet)[0]);
-  $tweet.append(header(tweet)[1]); 
-
+  let $header = $('<header>').addClass('tweet');
+  let $footer = $('<footer>').addClass('tweet');
+  $header.append(header(tweet)[0],header(tweet)[1],header(tweet)[2])
+  $footer.append(footer(tweet)[0]);
+  $footer.append(footer(tweet)[3], footer(tweet)[2], footer(tweet)[1]);
+  // $tweet.append(header(tweet)[0]);
+  // $tweet.append(header(tweet)[1]);
+  // $tweet.append(header(tweet)[2]); 
+  $tweet.append($header);
   $tweet.append($('<p>').text(tweet["content"]["text"]));
-  
-  $tweet.append(footer(tweet)[0]);
-  $tweet.append(footer(tweet)[3], footer(tweet)[2], footer(tweet)[1]);
+  $tweet.append($footer);
+  // $tweet.append(footer(tweet)[0]);
+  // $tweet.append(footer(tweet)[3], footer(tweet)[2], footer(tweet)[1]);
 
   return $tweet;
 }

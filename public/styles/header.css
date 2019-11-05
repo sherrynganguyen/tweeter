@@ -1,17 +1,16 @@
-header {
-  position: relative;
-  z-index: 2;
+.profile {
+  z-index: 1;
   width: 100%;
+  margin-top: 120px;
+  top: 120px;
   height: 400px;
   background-image:url('../images/cardboard.png');
   background-color: #e83600;
 }
 
-header div {
+.profile div {
   display: flex;
   justify-content: center;
 }
 
-header img {
-  margin-top: 1em;
-}
+

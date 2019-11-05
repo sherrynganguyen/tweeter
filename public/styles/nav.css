@@ -1,5 +1,7 @@
 nav {
-  z-index: 100;
+  position: fixed;
+  top: 0px;
+  z-index: 9999;
   display: flex;
   justify-content: space-between;
   width: 100%;
