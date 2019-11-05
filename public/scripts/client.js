@@ -29,28 +29,49 @@ const data = [
     }
   ]
 
-// const header = function (tweet) {
-//   let username = tweet["user"]["name"];
-//   let tweeter = tweet["user"]["handle"];
-//   return username, tweeter;
-// }
+function calDate(tweet) {
+  let postDate = tweet["created_at"];
+  let currentDate = Date.parse(Date())
+  let dateDiff = Math.round((currentDate - postDate)/86400000);
+  return dateDiff;
+}
 
+function header(tweet) {
+  let username = $("<h5 class='left'>").text(tweet["user"]["name"]);
+  let id = $("<h5 class='right'>").text(tweet["user"]["handle"]);
+  let header = [username, id]
+  return header;
+}
+
+function footer(tweet) {
+
+  let date = $("<h6 id='date'>").text(calDate(tweet) +" days ago");
+  let flag = $("<h6 id='social'>").prepend("<img src='/images/flag.png'>");
+  let retweet = $("<h6 id='social'>").prepend("<img src='/images/retweet.png'>");
+  let like = $("<h6 id='social'>").prepend("<img src='/images/heart.png'>");
+
+  let footer = [date, flag, retweet, like]
+  return footer;
+}
 
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
     let result = createTweetElement(tweet)
-    $('#tweets-container').append(result);
+    $('.container').append(result);
   }
   
 }
 
 const createTweetElement = function(tweet) {
-  let $tweet = $('<article>').addClass('tweet'); //create new article class??
-  // ...
-  $tweet.append($("<h5 id='left'>").text(tweet["user"]["name"]));
-  $tweet.append($("<h5 id='right'>").text(tweet["user"]["handle"]));
+  let $tweet = $('<article>').addClass('tweet');
+  $tweet.append(header(tweet)[0]);
+  $tweet.append(header(tweet)[1]); 
+
   $tweet.append($('<p>').text(tweet["content"]["text"]));
-  $tweet.append($('<h6>').text(tweet["created_at"]));
+  
+  $tweet.append(footer(tweet)[0]);
+  $tweet.append(footer(tweet)[3], footer(tweet)[2], footer(tweet)[1]);
+
   return $tweet;
 }
 

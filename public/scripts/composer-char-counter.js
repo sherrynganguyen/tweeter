@@ -4,15 +4,19 @@ $(document).ready(function() {
     const max = 140;
     let character = $(this).val().length;
     if (character > max) {
-      $(".counter").text(max  - character);
-      $(".counter").css('color', 'red');
+      $(this).siblings("span").text(max  - character);
+      $(this).siblings("span").addClass('colorchange');
+
       // alert('You reached the limit');
       // $(this).disabled;
       
     } else {
-      $(".counter").text(max  - character);
+      $(this).siblings("span").text(max  - character);
 
     }
 
     }) 
+  $("<article>").mouseover(function () {
+    $(this).addClass('hoverArticle')
+  })  
 });

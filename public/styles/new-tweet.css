@@ -11,12 +11,18 @@ textarea {
   border-bottom-color: #545149;
   background-color: transparent;
 }
+
 .tweetbox {
   background-color: blue;
   font-family: 'Bungee', cursive;
   color: #FFFFFF;
 }
+
 .counter {
   float: right;
+  font-family: 'Bungee', cursive;
+}
+.colorchange {
+  color: red;
 }
 
