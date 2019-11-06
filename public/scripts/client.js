@@ -6,21 +6,22 @@
 // Fake data taken from initial-tweets.json
 //Ajax
 $(function() {
-    const $button = $(".tweetbox");
-    $button.on('click',function () {
-      $.ajax({url: "/tweets", type: 'POST', data: $(".textarea").serialize()})
-    })
+  $('.tweetbox').on('click', function(event) {
+    event.preventDefault();
+    // console.log('test!')
+  });
+  const $button = $(".tweetbox");
+  $button.on('click',function () {
+    $.ajax({url: "/tweets", type: 'POST', data: $(".textarea").serialize()})
+  })
 });
 
 
 //Ajax
 
-$(document).ready(function() {
-  $('.tweetbox').on('click', function(event) {
-    event.preventDefault();
-    // console.log('test!')
-  });
-});
+// $(document).ready(function() {
+
+// });
 
 const data = [
     {
