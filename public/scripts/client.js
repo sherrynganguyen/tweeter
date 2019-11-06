@@ -5,16 +5,23 @@
  */
 // Fake data taken from initial-tweets.json
 //Ajax
-{/* <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script>
-  $(function () {
+$(function() {
+    const $button = $(".tweetbox");
+    $button.on('click',function () {
+      $.ajax({url: "/tweets", type: 'POST', data: $(".textarea").serialize()})
+    })
+});
 
-  });
-
-</script>
- */}
 
 //Ajax
+
+$(document).ready(function() {
+  $('.tweetbox').on('click', function(event) {
+    event.preventDefault();
+    // console.log('test!')
+  });
+});
+
 const data = [
     {
       "user": {
@@ -57,12 +64,12 @@ function header(tweet) {
 }
 
 function footer(tweet) {
-  // let social = $('<div class="social">');        // JH says maybe something like this?
-  let date = $("<h6 id='date'>").text(calDate(tweet) +" days ago");
-  let flag = $("<h6 id='social'>").append("<img src='/images/flag.png'>");
-  let retweet = $("<h6 id='social'>").append("<img src='/images/retweet.png'>");
-  let like = $("<h6 id='social'>").append("<img src='/images/heart.png'>");
-
+  // let social = $('<div>').addClass=('social');        // JH says maybe something like this?
+  const date = $("<h6 id='date'>").text(calDate(tweet) +" days ago");
+  const flag = $("<h6 id='social'>").append("<img src='/images/flag.png'>");
+  const retweet = $("<h6 id='social'>").append("<img src='/images/retweet.png'>");
+  const like = $("<h6 id='social'>").append("<img src='/images/heart.png'>");
+  // $(social)
   let footer = [date, flag, retweet, like]
   return footer;
 }
@@ -83,23 +90,11 @@ const createTweetElement = function(tweet) {
   $header.append(header(tweet)[0],header(tweet)[1],header(tweet)[2])
   $footer.append(footer(tweet)[0]);
   $footer.append(footer(tweet)[3], footer(tweet)[2], footer(tweet)[1]);
-  // $tweet.append(header(tweet)[0]);
-  // $tweet.append(header(tweet)[1]);
-  // $tweet.append(header(tweet)[2]); 
   $tweet.append($header);
   $tweet.append($('<p>').text(tweet["content"]["text"]));
   $tweet.append($footer);
-  // $tweet.append(footer(tweet)[0]);
-  // $tweet.append(footer(tweet)[3], footer(tweet)[2], footer(tweet)[1]);
-
   return $tweet;
 }
 
 renderTweets(data);
 
-
-// const $tweet = createTweetElement();
-
-// Test / driver code (temporary)
-// console.log($tweet); // to see what it looks like
-// $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
