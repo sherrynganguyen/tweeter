@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  // --- our code goes here ---
   $(".textarea").keyup(function() {
     const max = 140;
     let character = $(this).val().length;
@@ -16,7 +15,5 @@ $(document).ready(function() {
     }
 
     }) 
-  $("<article>").mouseover(function () {
-    $(this).addClass('hoverArticle')
-  })  
+
 });

@@ -4,6 +4,17 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 // Fake data taken from initial-tweets.json
+//Ajax
+{/* <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+  $(function () {
+
+  });
+
+</script>
+ */}
+
+//Ajax
 const data = [
     {
       "user": {
@@ -46,7 +57,7 @@ function header(tweet) {
 }
 
 function footer(tweet) {
-
+  // let social = $('<div class="social">');        // JH says maybe something like this?
   let date = $("<h6 id='date'>").text(calDate(tweet) +" days ago");
   let flag = $("<h6 id='social'>").append("<img src='/images/flag.png'>");
   let retweet = $("<h6 id='social'>").append("<img src='/images/retweet.png'>");
@@ -57,9 +68,10 @@ function footer(tweet) {
 }
 
 const renderTweets = function(tweets) {
+  // TODO: should we delete all the old tweets here before drawing in a bunch of new ones?
   for (let tweet of tweets) {
     let result = createTweetElement(tweet)
-    $('.container').append(result);
+    $('.all-tweets').append(result);
   }
   
 }
