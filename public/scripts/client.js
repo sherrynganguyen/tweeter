@@ -95,7 +95,7 @@ const loadTweet = function() {
 
 $(".new-tweet").hide().addClass('hidden')
 
-// slide up-slide down
+// slide up-slide down - NEW POST
 
 const slideUpDown = function() {
   $( "#toggle" ).on('click',(function() {
@@ -108,7 +108,19 @@ const slideUpDown = function() {
   ) 
 }
 
+// slide up & down for Error message
 
+$("#error").hide().addClass('hidden')
+const errMsg = function() {
+  $( ".textbox" ).on('click',(function() {
+    if ($("#error").hasClass('hidden')) {
+      $( "#error" ).slideToggle().removeClass('hidden')
+    } else {
+      $( "#error" ).slideToggle().addClass('hidden')
+    }
+  })
+  ) 
+}
 
   $('.all-tweet').load()
 // $(".new-tweet").hide().addClass('hidden');

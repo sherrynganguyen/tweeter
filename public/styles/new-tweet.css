@@ -32,3 +32,8 @@ textarea {
   visibility: hidden;
 }
 
+#error {
+  color: red;
+  border: red;
+}
+
