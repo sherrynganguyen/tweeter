@@ -33,7 +33,7 @@
       <span>tweeter</span>
       <div id="newpost">
         <span><strong>Write</strong> a new tweet</span>
-        <span><img src="/images/arrow.gif"></span>
+        <span id="toggle"><img src="/images/arrow.gif" type="submit"></span>
       </div>
       <!-- <h2>Testing layout</h2> -->
       <!-- <p>Testing CSS.</p> -->
@@ -55,7 +55,7 @@
         <h2>Compose Tweet</h2>
         <form action="/tweets/" method="POST">
           <textarea class="textarea" name="text" placeholder="What are you humming about?"></textarea>
-          <input class="tweetbox" type="submit" value="Tweet" method="POST">
+          <input class="tweetbox" type="submit" value="Tweet">
           <span class="counter">140</span>
         </form>
       </section>

@@ -4,47 +4,16 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 // Fake data taken from initial-tweets.json
-
-//Ajax
-
-const postTweet = function() {
-  $('.tweetbox').on('click', function(event) {
-    event.preventDefault();
-  });
-  const $button = $(".tweetbox");
-  $button.on('click',function () {
-    if ($(".textarea").val().length < 1) {
-      alert('Your tweet is empty!!!');
-    } else if ($(".textarea").val().length > 140) {
-      alert('Your tweet is over the limit!!!');
-    } else {
-      $.ajax({
-        url: "/tweets", 
-        type: 'POST', 
-        data: $(".textarea").serialize()
-      })
-      .done(loadTweet());
-    }
-  });  
-  
-};
-
-const loadTweet = function() {
-  $.ajax({url: "/tweets", type: 'GET'})
-  .done(function(tweetDatabase) {
-    renderTweets(tweetDatabase);
-  });
-};
-
-//Ajax
-
-
+// helpers
+$(document).ready(function() {
 function calDate(tweet) {
   let postDate = tweet["created_at"];
   let currentDate = Date.parse(Date())
   let dateDiff = Math.round((currentDate - postDate)/86400000);
   return dateDiff;
 }
+
+// Create tag for new tweet
 
 function header(tweet) {
   let icon = tweet["user"]["avatars"];
@@ -66,16 +35,6 @@ function footer(tweet) {
   return footer;
 }
 
-const renderTweets = function(tweets) {
-  $('.all-tweets').empty;
-  // TODO: should we delete all the old tweets here before drawing in a bunch of new ones?
-  for (let tweet of tweets) {
-    let result = createTweetElement(tweet)
-    $('.all-tweets').prepend(result);
-  }
-  
-}
-
 const createTweetElement = function(tweet) {
   let $tweet = $('<article>').addClass('tweet');
   let $header = $('<header>').addClass('tweet');
@@ -89,4 +48,83 @@ const createTweetElement = function(tweet) {
   return $tweet;
 }
 
+// rendering tweet
 
+const renderTweets = function(tweets) {
+  $('.all-tweets').empty;
+  // TODO: should we delete all the old tweets here before drawing in a bunch of new ones?
+  for (let tweet of tweets) {
+    let result = createTweetElement(tweet)
+    $('.all-tweets').prepend(result);
+  }
+  
+}
+
+//Post new tweet
+
+const postTweet = function() {
+  const $button = $(".tweetbox");
+  $button.on('click',function () {
+    if ($(".textarea").val().length < 1) {
+      alert('Your tweet is empty!!!');
+    } else if ($(".textarea").val().length > 140) {
+      alert('Your tweet is over the limit!!!');
+    } else {
+      $.ajax({
+        url: "/tweets", 
+        type: 'POST', 
+        data: $(".textarea").serialize()
+      })
+      .done(loadTweet());
+    }
+  });  
+  
+};
+
+const loadTweet = function() {
+  $.ajax({url: "/tweets", type: 'GET'})
+  .done(function(tweetDatabase) {
+    $('.textarea').trigger('reset');
+    renderTweets(tweetDatabase);
+  });
+};
+
+$(".new-tweet").hide().addClass('hidden')
+
+// slide up-slide down
+
+const slideUpDown = function() {
+  $( "#toggle" ).on('click',(function() {
+    if ($(".new-tweet").hasClass('hidden')) {
+      $( ".new-tweet" ).slideToggle().removeClass('hidden')
+    } else {
+      $( ".new-tweet" ).slideToggle().addClass('hidden')
+    }
+  })
+  // if ($(".new-tweet").hasClass('hidden')) {
+  //   $( "#toggle" ).on('click',(function() {
+  //   // })
+  //   $( ".new-tweet" ).slideToggle('slow', function() {
+  //     //   $this.removeClass('hidden')
+  //     // });
+  //   })
+  // })
+  //   // )
+  // } else {
+  //   $( "#toggle" ).on('click', (function() {
+  //     $( ".new-tweet" ).slideToggle().addClass('hidden');
+  //   })
+  //   );
+  ) 
+}
+
+
+
+  $('.all-tweet').load()
+// $(".new-tweet").hide().addClass('hidden');
+  $('.tweetbox').on('click', function(event) {
+    event.preventDefault();
+  });
+  slideUpDown();
+  postTweet();
+});
