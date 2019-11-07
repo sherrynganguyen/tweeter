@@ -19,16 +19,22 @@ $(function() {
       alert('Your tweet is over the limit!!!');
     } else {
       $.ajax({url: "/tweets", type: 'POST', data: $(".textarea").serialize()});
+      // $button.load( "index.html .all-tweets" );
+      $('.all-tweets').append();
     }
   });  
+  
 });
 
 $(function() {
+  // setInterval(
   $.ajax({url: "/tweets", type: 'GET'})
   .then(function(tweetDatabase) {
     renderTweets(tweetDatabase);
+    
   });
 });
+
 
 //Ajax
 
@@ -61,10 +67,11 @@ function footer(tweet) {
 }
 
 const renderTweets = function(tweets) {
+  $('.all-tweets').empty;
   // TODO: should we delete all the old tweets here before drawing in a bunch of new ones?
   for (let tweet of tweets) {
     let result = createTweetElement(tweet)
-    $('.all-tweets').append(result);
+    $('.all-tweets').prepend(result);
   }
   
 }
