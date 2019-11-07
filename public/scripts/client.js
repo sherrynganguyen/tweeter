@@ -1,9 +1,28 @@
 
+//helper functions
+
 function calDate(tweet) {
   let postDate = tweet["created_at"];
   let currentDate = Date.parse(Date())
-  let dateDiff = Math.round((currentDate - postDate)/86400000);
-  return dateDiff;
+  // let dateDiff = Math.round((currentDate - postDate)/86400000);
+  let dateDiff = (currentDate - postDate) / 86400000;
+  console.log(dateDiff);
+  if (dateDiff >= 365) {
+    dateDiff = Math.floor(dateDiff / 365);
+    return `Over ${dateDiff} years ago`;
+  } else if (dateDiff < 365 && dateDiff > 1) {
+    return `${dateDiff} days ago`;
+  } else if (dateDiff *24 > 1) {
+    dateDiff = Math.floor(dateDiff * 24);
+    return `${dateDiff} hours ago`;
+  } else if (dateDiff * 1400 > 1 ) {
+    dateDiff = Math.floor(dateDiff * 1440);
+    return `${dateDiff} minutes ago`;
+  } else if (dateDiff * 86400 > 0) {
+    dateDiff = Math.floor(dateDiff * 86400);
+    return `${dateDiff} seconds ago`;
+  }
+  // return dateDiff;
 }
 
 // Create tag for new tweet
@@ -27,7 +46,7 @@ function header(tweet) {
 
 function footer(tweet) {
   const $footer = $('<footer>').addClass('tweet_footer');
-  const $date = $('<span>').text(calDate(tweet) +" days ago");
+  const $date = $('<span>').text(calDate(tweet));
   const $div = $("<div>").addClass('social');
   const $flag = $("<img src='/images/flag.png'>");
   const $retweet = $("<img src='/images/retweet.png'>");
@@ -120,20 +139,15 @@ const errMsg = function(errormessage) {
   // ) 
 }
 
-  $('.all-tweet').load()
-// $(".new-tweet").hide().addClass('hidden');
+
+
+$(document).ready(function() {
   $('.tweetbox').on('click', function(event) {
     event.preventDefault();
   });
-  slideUpDown();
-  
-  postTweet();
-
-$(document).ready(function() {
   $("#error").hide().addClass('hidden')
   $(".new-tweet").hide().addClass('hidden')
   loadTweet();
-  slideUpDown()
+  slideUpDown();
   postTweet();
-
 });
