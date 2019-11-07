@@ -1,4 +1,3 @@
-$(document).ready(function() {
 
 function calDate(tweet) {
   let postDate = tweet["created_at"];
@@ -93,8 +92,6 @@ const loadTweet = function() {
   });
 };
 
-$(".new-tweet").hide().addClass('hidden')
-
 // slide up-slide down - NEW POST
 
 const slideUpDown = function() {
@@ -110,7 +107,7 @@ const slideUpDown = function() {
 
 // slide up & down for Error message
 
-$("#error").hide().addClass('hidden')
+
 const errMsg = function(errormessage) {
   // $( ".tweetbox" ).on('click',(function() {
     if ($("#error").hasClass('hidden')) {
@@ -131,4 +128,12 @@ const errMsg = function(errormessage) {
   slideUpDown();
   
   postTweet();
+
+$(document).ready(function() {
+  $("#error").hide().addClass('hidden')
+  $(".new-tweet").hide().addClass('hidden')
+  loadTweet();
+  slideUpDown()
+  postTweet();
+
 });
