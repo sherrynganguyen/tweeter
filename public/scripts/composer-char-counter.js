@@ -6,7 +6,7 @@ $(document).ready(function() {
       $(this).siblings("span").text(max  - character);
       $(this).siblings("span").addClass('colorchange');
 
-      // alert('You reached the limit');
+      alert('You reached the limit');
       // $(this).disabled;
       
     } else {
