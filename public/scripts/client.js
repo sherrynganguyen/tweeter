@@ -7,7 +7,7 @@
 
 //Ajax
 
-$(function() {
+const postTweet = function() {
   $('.tweetbox').on('click', function(event) {
     event.preventDefault();
   });
@@ -18,23 +18,23 @@ $(function() {
     } else if ($(".textarea").val().length > 140) {
       alert('Your tweet is over the limit!!!');
     } else {
-      $.ajax({url: "/tweets", type: 'POST', data: $(".textarea").serialize()});
-      // $button.load( "index.html .all-tweets" );
-      $('.all-tweets').append();
+      $.ajax({
+        url: "/tweets", 
+        type: 'POST', 
+        data: $(".textarea").serialize()
+      })
+      .done(loadTweet());
     }
   });  
   
-});
+};
 
-$(function() {
-  // setInterval(
+const loadTweet = function() {
   $.ajax({url: "/tweets", type: 'GET'})
-  .then(function(tweetDatabase) {
+  .done(function(tweetDatabase) {
     renderTweets(tweetDatabase);
-    
   });
-});
-
+};
 
 //Ajax
 

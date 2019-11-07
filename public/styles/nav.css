@@ -11,8 +11,15 @@ nav {
   font-family:'Bungee', cursive;
   color: #FFFFFF;
 }
-
-#newpost {
-  font-size: 24px;
+#newpost span {
+  display: block;
+}
+#newpost span{
+  font-size: 20px;
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+#newpost img {
+  width: 40px;
+  height: 40px;
 }
