@@ -10,7 +10,7 @@ article {
   color: #545149;
 }
 
-article:hover .right {
+article:hover .handle {
   color:#b6b5b1;
 }
 
@@ -18,9 +18,31 @@ article:hover {
   box-shadow: 10px 10px 15px 0px #949494;
 }
 
-article header {
+.tweet_header {
   margin: 0 2.5%;
   height: 50px;
+  padding-top: 1em;
+  background-image: none;
+  background-color: #f4f1ec;
+  font-size:20px; 
+  font-family: 'Bungee', cursive;
+}
+.user {
+  vertical-align: middle;
+  display: inline-flex;
+}
+.user img {
+  float: left;
+  margin-top: 0px;
+  width: 30px;
+  height: 30px;
+}
+
+.handle {
+  margin-top: 5px;
+  color: #f4f1ec;
+  float: right;
+  font-size: 15px;
 }
 
 article p {
@@ -38,55 +60,39 @@ article p {
 article footer {
   margin: 1% 2.5% 0% 2.5%;
   height: 50px;
-  padding-top: 5px;;
-}
-
-h5 {
-  vertical-align: middle;
-  display: inline-flex;
-  margin: 0;
-  margin-right: 5px;
-  padding-top: 1em;
-  background-image: none;
-  background-color: #f4f1ec;
-  font-size:20px; 
+  padding-top: 5px;
   font-family: 'Bungee', cursive;
 }
 
-h6 {
+.social {
+  
+  margin: auto;
+  display: inline-flex;
+  float: right;
+  justify-content: space-between;
+}
+
+/* h6 {
   
   margin: auto;
   display: inline-flex;
   justify-content: space-between;
-}
+} */
 
-h6 img {
-  float: right;
+.social img {
+  margin-right: 5px;
   width: 20px;
   height: 20px;
 }
 
-h5 img {
-  float: left;
-  margin-top: 0px;
-  width: 35px;
-  height: 35px;
-}
-
-.right {
-  color:#f4f1ec;
-  float: right;
-  font-size: 15px;
-}
-
-#date {
+footer span {
   float: left;
 }
-
+/* 
 #social {
   float: right;
   margin-left: 1em;
-}
+} */
 
 .hoverArticle {
   box-shadow: 10px 10px 15px 0px #949494;

@@ -1,11 +1,5 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-// Fake data taken from initial-tweets.json
-// helpers
 $(document).ready(function() {
+
 function calDate(tweet) {
   let postDate = tweet["created_at"];
   let currentDate = Date.parse(Date())
@@ -16,35 +10,40 @@ function calDate(tweet) {
 // Create tag for new tweet
 
 function header(tweet) {
-  let icon = tweet["user"]["avatars"];
-  let photo = $("<h5 class='icon'>").append(`<img src=${icon}>`);
-  let username = $("<h5 class='left'>").text(tweet["user"]["name"]);
-  let id = $("<h5 class='right'>").text(tweet["user"]["handle"]);
-  let header = [photo, username, id]
-  return header;
+  const icon = tweet["user"]["avatars"];
+  const $header = $('<header>').addClass('tweet_header');
+  const $div = $("<div>").addClass('user');
+  const $img = $(`<img src=${icon}>`);
+  const $username = $("<span>").addClass('username');
+  const $handle = $("<span>").addClass('handle');
+
+  $username.text(tweet["user"]["name"]);
+  $handle.text(tweet["user"]["handle"]);
+
+  $div.append($img, $username)
+  $header.append($div, $handle)
+
+  return $header;
 }
 
 function footer(tweet) {
-  // let social = $('<div>').addClass=('social');        // JH says maybe something like this?
-  const date = $("<h6 id='date'>").text(calDate(tweet) +" days ago");
-  const flag = $("<h6 id='social'>").append("<img src='/images/flag.png'>");
-  const retweet = $("<h6 id='social'>").append("<img src='/images/retweet.png'>");
-  const like = $("<h6 id='social'>").append("<img src='/images/heart.png'>");
-  // $(social)
-  let footer = [date, flag, retweet, like]
-  return footer;
+  const $footer = $('<footer>').addClass('tweet_footer');
+  const $date = $('<span>').text(calDate(tweet) +" days ago");
+  const $div = $("<div>").addClass('social');
+  const $flag = $("<img src='/images/flag.png'>");
+  const $retweet = $("<img src='/images/retweet.png'>");
+  const $like = $("<img src='/images/heart.png'>");
+
+  $div.append($flag, $retweet, $like);
+  $footer.append($date, $div);
+  return $footer;
 }
 
 const createTweetElement = function(tweet) {
   let $tweet = $('<article>').addClass('tweet');
-  let $header = $('<header>').addClass('tweet');
-  let $footer = $('<footer>').addClass('tweet');
-  $header.append(header(tweet)[0],header(tweet)[1],header(tweet)[2])
-  $footer.append(footer(tweet)[0]);
-  $footer.append(footer(tweet)[3], footer(tweet)[2], footer(tweet)[1]);
-  $tweet.append($header);
+  $tweet.append(header(tweet));
   $tweet.append($('<p>').text(tweet["content"]["text"]));
-  $tweet.append($footer);
+  $tweet.append(footer(tweet));
   return $tweet;
 }
 
