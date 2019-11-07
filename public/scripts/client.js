@@ -75,7 +75,11 @@ const postTweet = function() {
         type: 'POST', 
         data: $(".textarea").serialize()
       })
-      .done(loadTweet());
+      .done(
+        $('.textarea').val(""),
+        $('.counter').html(140),
+        loadTweet()
+        );
     }
   });  
   
@@ -101,20 +105,6 @@ const slideUpDown = function() {
       $( ".new-tweet" ).slideToggle().addClass('hidden')
     }
   })
-  // if ($(".new-tweet").hasClass('hidden')) {
-  //   $( "#toggle" ).on('click',(function() {
-  //   // })
-  //   $( ".new-tweet" ).slideToggle('slow', function() {
-  //     //   $this.removeClass('hidden')
-  //     // });
-  //   })
-  // })
-  //   // )
-  // } else {
-  //   $( "#toggle" ).on('click', (function() {
-  //     $( ".new-tweet" ).slideToggle().addClass('hidden');
-  //   })
-  //   );
   ) 
 }
 
