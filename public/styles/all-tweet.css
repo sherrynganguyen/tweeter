@@ -32,6 +32,7 @@ article p {
   border-width: medium;
   border-color: #545149;
   font-size: 24px;
+  overflow-wrap: break-word;
 }
 
 article footer {

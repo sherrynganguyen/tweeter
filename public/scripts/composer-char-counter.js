@@ -5,13 +5,13 @@ $(document).ready(function() {
     if (character > max) {
       $(this).siblings("span").text(max  - character);
       $(this).siblings("span").addClass('colorchange');
-
-      alert('You reached the limit');
-      // $(this).disabled;
+      
+      // alert('You reached the limit');
+      // $(this).prop('disabled', true);
       
     } else {
       $(this).siblings("span").text(max  - character);
-
+      $(this).siblings("span").removeClass('colorchange');
     }
 
     }) 

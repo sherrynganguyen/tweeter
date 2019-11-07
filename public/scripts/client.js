@@ -51,7 +51,7 @@ const createTweetElement = function(tweet) {
 // rendering tweet
 
 const renderTweets = function(tweets) {
-  $('.all-tweets').empty;
+  $('.all-tweets').empty();
   // TODO: should we delete all the old tweets here before drawing in a bunch of new ones?
   for (let tweet of tweets) {
     let result = createTweetElement(tweet)
@@ -66,9 +66,11 @@ const postTweet = function() {
   const $button = $(".tweetbox");
   $button.on('click',function () {
     if ($(".textarea").val().length < 1) {
-      alert('Your tweet is empty!!!');
+      let errormessage = "Your tweet is empty. Please type something!!"
+      errMsg(errormessage);
     } else if ($(".textarea").val().length > 140) {
-      alert('Your tweet is over the limit!!!');
+      let errormessage = "Your tweet is over the limit of 140 characters."
+      errMsg(errormessage);
     } else {
       $.ajax({
         url: "/tweets", 
@@ -77,7 +79,7 @@ const postTweet = function() {
       })
       .done(
         $('.textarea').val(""),
-        $('.counter').html(140),
+        $('.counter').html("140"),
         loadTweet()
         );
     }
@@ -88,7 +90,6 @@ const postTweet = function() {
 const loadTweet = function() {
   $.ajax({url: "/tweets", type: 'GET'})
   .done(function(tweetDatabase) {
-    $('.textarea').trigger('reset');
     renderTweets(tweetDatabase);
   });
 };
@@ -111,15 +112,16 @@ const slideUpDown = function() {
 // slide up & down for Error message
 
 $("#error").hide().addClass('hidden')
-const errMsg = function() {
-  $( ".textbox" ).on('click',(function() {
+const errMsg = function(errormessage) {
+  // $( ".tweetbox" ).on('click',(function() {
     if ($("#error").hasClass('hidden')) {
       $( "#error" ).slideToggle().removeClass('hidden')
+      $( "#error" ).text(errormessage)
     } else {
       $( "#error" ).slideToggle().addClass('hidden')
     }
-  })
-  ) 
+  // })
+  // ) 
 }
 
   $('.all-tweet').load()
@@ -128,5 +130,6 @@ const errMsg = function() {
     event.preventDefault();
   });
   slideUpDown();
+  
   postTweet();
 });
