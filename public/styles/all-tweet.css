@@ -19,6 +19,10 @@ article:hover {
   box-shadow: 10px 10px 15px 0px #949494;
 }
 
+article:hover .social {
+  visibility: visible;
+}
+
 .tweet_header {
   margin: 0 2.5%;
   height: 50px;
@@ -70,11 +74,11 @@ article footer {
 }
 
 .social {
-  
   margin: auto;
   display: inline-flex;
   float: right;
   justify-content: space-between;
+  visibility: hidden;
 }
 
 .social img {
@@ -86,4 +90,5 @@ article footer {
 footer span {
   float: left;
 }
+
 
