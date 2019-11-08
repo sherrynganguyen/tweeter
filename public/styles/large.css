@@ -2,14 +2,15 @@
   nav {
     background-color: #4056A1;
     background-image: none;
-    /* line-height: ; */
   }
   .profile {
     margin: 0 5%;
-    /* margin-top: 200px; */
     float: left;
     width: 30vw;
     height: 45vh;
+  }
+  .profile img {
+    margin-top: 10%;
   }
   main {
     margin-top: 200px;
