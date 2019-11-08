@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $(".textarea").keyup(() => {
+  $(".textarea").keyup(function() {
     const max = 140;
     let character = $(this).val().length;
     if (character > max) {

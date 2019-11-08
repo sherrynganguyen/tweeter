@@ -34,6 +34,11 @@ main {
   width: 90%;
 }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+#scrollup img {
+  width: 60px;
+  height: 60px;
+  z-index: 800;
+  margin-bottom: 5%;
+  margin-right: 5%;
+  float: right;
+}

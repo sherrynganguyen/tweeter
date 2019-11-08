@@ -5,7 +5,6 @@ const calDate = tweet => {
   let postDate = tweet["created_at"];
   let currentDate = Date.parse(Date());
   let dateDiff = (currentDate - postDate) / 86400000;
-  console.log(dateDiff);
   if (dateDiff >= 365) {
     dateDiff = Math.floor(dateDiff / 365);
     return `Over ${dateDiff} years ago`;
@@ -126,17 +125,23 @@ const slideUpDown = () => {
 
 const errMsg = errormessage => {
   if ($("#error").hasClass('hidden')) {
-    $("#error").slideToggle().removeClass('hidden');
+    $("#error").slideDown().removeClass('hidden');
     $("#error").text(errormessage);
-  } else {
-    $("#error").slideToggle().addClass('hidden');
-  }
+  } 
+  $(".textarea").focus();
 };
 
 $(document).ready(() => {
   $('.tweetbox').on('click', event => {
     event.preventDefault();
   });
+
+  if (!$("#error").hasClass('hidden')) {
+    $('.textarea').keydown(() => {
+      $("#error").slideUp().addClass('hidden');
+    }); 
+  }
+
   $("#error").hide().addClass('hidden');
   $(".new-tweet").hide().addClass('hidden');
   loadTweet();

@@ -18,13 +18,13 @@
     <link rel="stylesheet" href="/styles/all-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/large.css" type="text/css" />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-    <script type="text/javascript" src="/scripts/hover.js"></script>  
 
   </head>
 
@@ -43,15 +43,13 @@
       <div>
           <img src="/images/profile-hex.png"> 
       </div>
-      <br>
       <div>
           <h2>Sherry Nguyen</h2>
       </div>
     </header>
-    <!-- Page-specific (main) content here -->
     <main>
       <!-- new tweet -->
-      <p id="error">Test</p>
+      <p id="error"></p>
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form action="/tweets/" method="POST">
@@ -64,6 +62,7 @@
       <section class="all-tweets">
       <!-- all tweet posted -->
       </section>
+      <button id="scrollup"><img src="/images/up-arrow.png"></button>
     </main>
   </body>
 </html>

@@ -11,7 +11,7 @@
 .profile div {
   display: flex;
   justify-content: center;
-  margin-top: 2.5%;
 }
-
-
+.profile div img{
+  margin-top: 10%;
+}
