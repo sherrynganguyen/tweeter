@@ -38,3 +38,10 @@ button{
   border: none;
   cursor: pointer;
 }
+
+.toggle img:hover {
+  animation-duration: 2s;
+  animation-play-state: running;
+  animation-name: bounceIn;
+}
+
