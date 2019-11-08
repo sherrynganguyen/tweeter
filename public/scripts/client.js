@@ -114,7 +114,7 @@ const loadTweet = function() {
 // slide up-slide down - NEW POST
 
 const slideUpDown = function() {
-  $( "#toggle" ).on('click',(function() {
+  $( ".toggle" ).on('click',(function() {
     if ($(".new-tweet").hasClass('hidden')) {
       $( ".new-tweet" ).slideToggle().removeClass('hidden')
     } else {

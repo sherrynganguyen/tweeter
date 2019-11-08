@@ -12,20 +12,28 @@ nav {
   font-family:'Bungee', cursive;
   color: #FFFFFF;
 }
-#newpost span {
+
+#newpost button {
   display: block;
+  margin: auto;
+  margin-bottom: -10px;
 }
-#newpost span{
-  font-size: 20px;
+
+.toggle span{
+
+  font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-#newpost img {
-  width: 40px;
-  height: 40px;
+.toggle img {
+  width: 50px;
+  height: 50px;
   background-color: transparent;
 }
 
-button {
+button{
+  color: #ffffff;
   background-color: transparent;
+  outline: none;
+  border: none;
 }
