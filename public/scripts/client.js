@@ -1,10 +1,9 @@
 
-//helper functions
+//Helper functions
 
-function calDate(tweet) {
+const calDate = tweet => {
   let postDate = tweet["created_at"];
-  let currentDate = Date.parse(Date())
-  // let dateDiff = Math.round((currentDate - postDate)/86400000);
+  let currentDate = Date.parse(Date());
   let dateDiff = (currentDate - postDate) / 86400000;
   console.log(dateDiff);
   if (dateDiff >= 365) {
@@ -12,22 +11,21 @@ function calDate(tweet) {
     return `Over ${dateDiff} years ago`;
   } else if (dateDiff < 365 && dateDiff > 1) {
     return `${dateDiff} days ago`;
-  } else if (dateDiff *24 > 1) {
+  } else if (dateDiff * 24 > 1) {
     dateDiff = Math.floor(dateDiff * 24);
     return `${dateDiff} hours ago`;
-  } else if (dateDiff * 1400 > 1 ) {
+  } else if (dateDiff * 1400 > 1) {
     dateDiff = Math.floor(dateDiff * 1440);
     return `${dateDiff} minutes ago`;
   } else if (dateDiff * 86400 > 0) {
     dateDiff = Math.floor(dateDiff * 86400);
     return `${dateDiff} seconds ago`;
   }
-  // return dateDiff;
-}
+};
 
 // Create tag for new tweet
 
-function header(tweet) {
+const header = tweet => {
   const icon = tweet["user"]["avatars"];
   const $header = $('<header>').addClass('tweet_header');
   const $div = $("<div>").addClass('user');
@@ -38,13 +36,13 @@ function header(tweet) {
   $username.text(tweet["user"]["name"]);
   $handle.text(tweet["user"]["handle"]);
 
-  $div.append($img, $username)
-  $header.append($div, $handle)
+  $div.append($img, $username);
+  $header.append($div, $handle);
 
   return $header;
-}
+};
 
-function footer(tweet) {
+const footer = tweet => {
   const $footer = $('<footer>').addClass('tweet_footer');
   const $date = $('<span>').text(calDate(tweet));
   const $div = $("<div>").addClass('social');
@@ -55,98 +53,95 @@ function footer(tweet) {
   $div.append($flag, $retweet, $like);
   $footer.append($date, $div);
   return $footer;
-}
+};
 
-const createTweetElement = function(tweet) {
+const createTweetElement = tweet => {
   let $tweet = $('<article>').addClass('tweet');
   $tweet.append(header(tweet));
   $tweet.append($('<p>').text(tweet["content"]["text"]));
   $tweet.append(footer(tweet));
   return $tweet;
-}
+};
 
-// rendering tweet
+// Render tweet
 
-const renderTweets = function(tweets) {
+const renderTweets = tweets => {
   $('.all-tweets').empty();
-  // TODO: should we delete all the old tweets here before drawing in a bunch of new ones?
   for (let tweet of tweets) {
-    let result = createTweetElement(tweet)
-    $('.all-tweets').prepend(result);
+    let newTweet = createTweetElement(tweet);
+    $('.all-tweets').prepend(newTweet);
   }
-  
-}
+};
 
 //Post new tweet
 
-const postTweet = function() {
+const loadTweet = () => {
+  $.ajax({url: "/tweets", type: 'GET'})
+    .done(tweetDatabase => {
+      renderTweets(tweetDatabase);
+    });
+};
+
+const postTweet = () => {
   const $button = $(".tweetbox");
-  $button.on('click',function () {
-    if ($(".textarea").val().length < 1) {
-      let errormessage = "Your tweet is empty. Please type something!!"
+  const $text = $(".textarea");
+  $button.on('click', () => {
+    if ($text.val().length < 1) {
+      let errormessage = "Your tweet is empty. Please type something!!";
       errMsg(errormessage);
-    } else if ($(".textarea").val().length > 140) {
-      let errormessage = "Your tweet is over the limit of 140 characters."
+    } else if ($text.val().length > 140) {
+      let errormessage = "Your tweet is over the limit of 140 characters.";
       errMsg(errormessage);
     } else {
       $.ajax({
-        url: "/tweets", 
-        type: 'POST', 
-        data: $(".textarea").serialize()
+        url: "/tweets",
+        type: 'POST',
+        data: $text.serialize()
       })
-      .done(
-        $('.textarea').val(""),
-        $('.counter').html("140"),
-        loadTweet()
+        .done(
+          $text.val(""),
+          $('.counter').html("140"),
+          loadTweet()
         );
     }
-  });  
+  });
   
 };
 
-const loadTweet = function() {
-  $.ajax({url: "/tweets", type: 'GET'})
-  .done(function(tweetDatabase) {
-    renderTweets(tweetDatabase);
-  });
-};
+
 
 // slide up-slide down - NEW POST
 
-const slideUpDown = function() {
-  $( ".toggle" ).on('click',(function() {
+const slideUpDown = () => {
+  $(".toggle").on('click',(() => {
     if ($(".new-tweet").hasClass('hidden')) {
-      $( ".new-tweet" ).slideToggle().removeClass('hidden')
+      $(".new-tweet").slideToggle().removeClass('hidden');
+      $(".textarea").focus();
     } else {
-      $( ".new-tweet" ).slideToggle().addClass('hidden')
+      $(".new-tweet").slideToggle().addClass('hidden');
     }
   })
-  ) 
-}
+  );
+};
 
 // slide up & down for Error message
 
 
-const errMsg = function(errormessage) {
-  // $( ".tweetbox" ).on('click',(function() {
-    if ($("#error").hasClass('hidden')) {
-      $( "#error" ).slideToggle().removeClass('hidden')
-      $( "#error" ).text(errormessage)
-    } else {
-      $( "#error" ).slideToggle().addClass('hidden')
-    }
-  // })
-  // ) 
-}
+const errMsg = errormessage => {
+  if ($("#error").hasClass('hidden')) {
+    $("#error").slideToggle().removeClass('hidden');
+    $("#error").text(errormessage);
+  } else {
+    $("#error").slideToggle().addClass('hidden');
+  }
+};
 
-
-
-$(document).ready(function() {
-  $('.tweetbox').on('click', function(event) {
+$(document).ready(() => {
+  $('.tweetbox').on('click', event => {
     event.preventDefault();
   });
-  $("#error").hide().addClass('hidden')
-  $(".new-tweet").hide().addClass('hidden')
+  $("#error").hide().addClass('hidden');
+  $(".new-tweet").hide().addClass('hidden');
   loadTweet();
   slideUpDown();
   postTweet();

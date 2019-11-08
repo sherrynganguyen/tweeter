@@ -16,6 +16,7 @@ textarea {
 
 .tweetbox {
   background-color: blue;
+  outline: none;
   font-family: 'Bungee', cursive;
   color: #FFFFFF;
 }

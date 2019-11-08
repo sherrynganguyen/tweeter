@@ -22,6 +22,9 @@
   .new-tweet {
     margin-top: -2.5%;
   }
+  .all-tweets {
+    margin-top: -2.5%;
+  }
   #error {
     margin-top: 0;
   }
