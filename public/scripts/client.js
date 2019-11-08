@@ -131,11 +131,25 @@ const errMsg = errormessage => {
   $(".textarea").focus();
 };
 
+// second button
+
+const activateSecondButton = () => {
+  $(document).scroll(() => {
+    $('#scrollup').show().removeClass('hidden');
+  })
+}
+
+const scrollUpButton = () => {
+  $('#scrollup').on('click', () => {
+    $(document).scrollTop(0);
+  })
+}
+
 $(document).ready(() => {
   $('.tweetbox').on('click', event => {
     event.preventDefault();
   });
-
+  /* slide error msg up */
   if (!$("#error").hasClass('hidden')) {
     $('.textarea').keydown(() => {
       $("#error").slideUp().addClass('hidden');
@@ -144,7 +158,10 @@ $(document).ready(() => {
 
   $("#error").hide().addClass('hidden');
   $(".new-tweet").hide().addClass('hidden');
+  $("#scrollup").hide().addClass('hidden');
   loadTweet();
   slideUpDown();
+  activateSecondButton();
   postTweet();
+  scrollUpButton();
 });

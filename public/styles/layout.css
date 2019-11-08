@@ -35,10 +35,12 @@ main {
 }
 
 #scrollup img {
+  position: fixed;
+  overflow: auto;
   width: 60px;
   height: 60px;
   z-index: 800;
-  margin-bottom: 5%;
-  margin-right: 5%;
+  bottom: 25px;
+  right: 25px;
   float: right;
 }
