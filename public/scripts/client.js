@@ -127,7 +127,7 @@ const errMsg = errormessage => {
   if ($("#error").hasClass('hidden')) {
     $("#error").slideDown().removeClass('hidden');
     $("#error").text(errormessage);
-  } 
+  }
   $(".textarea").focus();
 };
 
@@ -136,7 +136,7 @@ const errMsg = errormessage => {
 const activateSecondButton = () => {
   $(document).scroll(() => {
     $('#scrollup').show().removeClass('hidden');
-  })
+  });
 };
 
 const scrollUpButton = () => {
@@ -145,8 +145,8 @@ const scrollUpButton = () => {
     if ($(".new-tweet").hasClass('hidden')) {
       $(".new-tweet").slideToggle().removeClass('hidden');
       $(".textarea").focus();
-    } 
-  })
+    }
+  });
 };
 
 $(document).ready(() => {
@@ -157,7 +157,7 @@ $(document).ready(() => {
   if (!$("#error").hasClass('hidden')) {
     $('.textarea').keydown(() => {
       $("#error").slideUp().addClass('hidden');
-    }); 
+    });
   }
 
   $("#error").hide().addClass('hidden');

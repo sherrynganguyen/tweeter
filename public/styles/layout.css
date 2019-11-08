@@ -10,10 +10,6 @@ html {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
-
 body {
   width: 100%;
   align-content: center;
@@ -33,6 +29,8 @@ main {
   margin-right: 5%;
   width: 90%;
 }
+
+/*scroll arrow in bottom right*/
 
 #scrollup img {
   position: fixed;
