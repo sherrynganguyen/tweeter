@@ -131,19 +131,23 @@ const errMsg = errormessage => {
   $(".textarea").focus();
 };
 
-// second button
+// second button - scroll up and enable textarea
 
 const activateSecondButton = () => {
   $(document).scroll(() => {
     $('#scrollup').show().removeClass('hidden');
   })
-}
+};
 
 const scrollUpButton = () => {
   $('#scrollup').on('click', () => {
     $(document).scrollTop(0);
+    if ($(".new-tweet").hasClass('hidden')) {
+      $(".new-tweet").slideToggle().removeClass('hidden');
+      $(".textarea").focus();
+    } 
   })
-}
+};
 
 $(document).ready(() => {
   $('.tweetbox').on('click', event => {
