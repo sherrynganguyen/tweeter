@@ -100,15 +100,13 @@ const postTweet = () => {
       })
         .done(
           $text.val(""),
-          $('.counter').html("140"),
+          $(".counter").html("140"),
           loadTweet()
         );
     }
   });
   
 };
-
-
 
 // slide up-slide down - NEW POST
 
@@ -125,7 +123,6 @@ const slideUpDown = () => {
 };
 
 // slide up & down for Error message
-
 
 const errMsg = errormessage => {
   if ($("#error").hasClass('hidden')) {
