@@ -28,10 +28,12 @@ article:hover {
   font-size:20px; 
   font-family: 'Bungee', cursive;
 }
+
 .user {
   vertical-align: middle;
   display: inline-flex;
 }
+
 .user img {
   float: left;
   margin-top: 0px;

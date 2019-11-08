@@ -12,12 +12,12 @@
   display: flex;
   justify-content: center;
 }
-.profile div img{
 
+.profile div img{
   padding-top: 10%;
 }
-.profile div h2 {
 
+.profile div h2 {
   margin-bottom: 10%;
   margin-top: 0;
   font-size: 32px;

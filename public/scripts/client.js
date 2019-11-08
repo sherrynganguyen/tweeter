@@ -159,7 +159,7 @@ $(document).ready(() => {
       $("#error").slideUp().addClass('hidden');
     });
   }
-
+  
   $("#error").hide().addClass('hidden');
   $(".new-tweet").hide().addClass('hidden');
   $("#scrollup").hide().addClass('hidden');

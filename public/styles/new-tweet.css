@@ -7,6 +7,7 @@
 .new-tweet h2 {
   margin-top:0%
 }
+
 .textarea {
   outline: none;
   width: 100%;
@@ -29,6 +30,7 @@
   float: right;
   font-family: 'Bungee', cursive;
 }
+
 .colorchange {
   color: red;
 }
