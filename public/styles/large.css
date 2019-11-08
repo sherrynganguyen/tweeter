@@ -1,4 +1,4 @@
-@media all and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   nav {
     background-color: #4056A1;
     background-image: none;
@@ -6,27 +6,24 @@
   .profile {
     margin: 0 5%;
     float: left;
-    width: 30vw;
-    height: 45vh;
-  }
-  .profile img {
-    margin-top: 10%;
+    width: 25%;
+    height: auto;
   }
   main {
     margin-top: 200px;
   }
   .new-tweet, .all-tweets, #error{
     float: right;
-    width: 50vw;
-    margin-bottom: 2.5%;
+    width: 65%;
   }
   .new-tweet {
-    margin-top: -2.5%;
+    margin-top: 0;
   }
-  .all-tweets {
-    margin-top: -2.5%;
+  .tweet {
+    margin-top: -1px;
   }
   #error {
     margin-top: 0;
   }
 }
+

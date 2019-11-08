@@ -1,9 +1,13 @@
 .new-tweet {
   width: 100%;
+  margin-top: 5%;
   margin-bottom: 5%;
 }
 
-textarea {
+.new-tweet h2 {
+  margin-top:0%
+}
+.textarea {
   outline: none;
   width: 100%;
   margin-bottom: 5px;
